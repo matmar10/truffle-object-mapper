@@ -1,0 +1,37 @@
+{
+  "name": "truffle-object-mapper",
+  "version": "1.0.0",
+  "description": "Get all the values from a contract in the blockchain, optionally transformed as desired",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "blockchain",
+    "ethereum",
+    "truffle",
+    "solidity",
+    "map",
+    "mapper",
+    "marshal",
+    "transform",
+    "dump"
+  ],
+  "author": "Matthew J. Martin <matthew.mar10@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@truffle/config": "^1.2.7",
+    "@truffle/contract": "^4.1.1",
+    "@truffle/provider": "^0.2.3",
+    "bluebird": "^3.7.1",
+    "bn.js": "^5.0.0",
+    "deepmerge": "^4.2.2",
+    "glob": "^7.1.6",
+    "object-mapper": "^6.0.1",
+    "truffle-hdwallet-provider-privkey": "^0.3.0",
+    "web3": "^1.2.4"
+  },
+  "devDependencies": {
+    "eslint-plugin-es-beautifier": "^1.0.1"
+  }
+}
