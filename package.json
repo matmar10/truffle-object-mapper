@@ -4,7 +4,7 @@
   "description": "Get all the values from a contract in the blockchain, optionally transformed as desired",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "release": "release-it"
   },
   "keywords": [
     "blockchain",
@@ -32,6 +32,7 @@
     "web3": "^1.2.4"
   },
   "devDependencies": {
-    "eslint-plugin-es-beautifier": "^1.0.1"
+    "eslint-plugin-es-beautifier": "^1.0.1",
+    "release-it": "^12.4.3"
   }
 }
