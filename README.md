@@ -38,9 +38,27 @@ See [Object Mapper](https://github.com/wankdanker/node-object-mapper#readme) for
 
 ```JavaScript
 const values = await mapper.map('Token', '0xf793db07d9952ff75d5371cceb98c4380277503f', {
+  // map the property 'name' to the output key 'tokenName'
   name: 'tokenName',
-  symbol: {
-    key: 'tokenSymbol'    
-  }
+  // use a custom transformation
+  status: {
+    key: 'status',
+    transform: function(val) {
+      const statuses = {
+        0: 'New',
+        1: 'Active',
+        2: 'Closed'
+      };
+      const index = val.toString();
+      return statuses[index];
+    }
+  },
+  // send a single value to multiple output values
+  symbol: ['tokenSymbol', {
+    key: 'symbol',
+    transform: function(val) {
+      return `XYZ:${val}`;
+    }
+  }],
 });
 ```
