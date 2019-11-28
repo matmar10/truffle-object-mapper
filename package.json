@@ -34,5 +34,20 @@
   "devDependencies": {
     "eslint-plugin-es-beautifier": "^1.0.1",
     "release-it": "^12.4.3"
+  },
+  "release-it": {
+    "non-interactive": true,
+    "git": {
+      "commit": true,
+      "requireUpstream": false,
+      "tag": true,
+      "push": true
+    },
+    "github": {
+      "release": true
+    },
+    "npm": {
+      "publish": true
+    }
   }
 }
