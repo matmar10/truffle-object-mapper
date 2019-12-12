@@ -41,6 +41,7 @@
     "git": {
       "commit": true,
       "requireUpstream": false,
+      "requireCleanWorkingDir": false,
       "tag": true,
       "push": true
     },
