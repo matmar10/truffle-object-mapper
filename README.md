@@ -4,6 +4,8 @@ Truffle Object Mapper
 
 Quickly and painless dump all the values from a deployed contract.
 
+See [Object Mapper](https://github.com/wankdanker/node-object-mapper#readme) for full details on output mapping syntax.
+
 ## Quick Usage
 
 ```JavaScript
@@ -18,7 +20,7 @@ const mapper = new Mapper();
 })();
 ```
 
-## Customize Output for Types
+### Customize Output for Types
 
 ```JavaScript
 const mapper = new Mapper({
@@ -32,11 +34,41 @@ const mapper = new Mapper({
 const values = await mapper.map('Token', '0xf793db07d9952ff75d5371cceb98c4380277503f');
 ```
 
-## Change Output Mapping
+### Provide Custom Output Mapping
 
 See [Object Mapper](https://github.com/wankdanker/node-object-mapper#readme) for full details on output mapping.
 
 ```JavaScript
+
+// all calls to .map will apply these transformations
+const mapper = new Mapper({
+  mapping: {
+    // example: 'State' is an integer representing a struct
+    // this will output two keys:
+    //  'state' - the integer
+    //  'stateName' - the string representing the struct
+    State: [
+      {
+        key: 'state',
+        transform: function (val) {
+          const index = Number(val.toString());
+          const states = ['Funding', 'Active', 'Matured'];
+          return states[index];
+        },
+      },
+      'stateName',
+    ],
+  },
+});
+
+
+```
+
+### Change Output Mapping Each Time
+
+```JavaScript
+
+// this custom mapping only applies to this call of .map
 const values = await mapper.map('Token', '0xf793db07d9952ff75d5371cceb98c4380277503f', {
   // map the property 'name' to the output key 'tokenName'
   name: 'tokenName',
@@ -62,3 +94,6 @@ const values = await mapper.map('Token', '0xf793db07d9952ff75d5371cceb98c4380277
   }],
 });
 ```
+
+## API Methods
+ 
