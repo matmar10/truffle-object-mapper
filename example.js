@@ -9,7 +9,7 @@ function bNToString(val) {
 
 const mapper = new Mapper({
   mapping: {
-    State: [
+    state: [
       {
         key: 'state',
         transform: function (val) {

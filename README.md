@@ -43,20 +43,22 @@ See [Object Mapper](https://github.com/wankdanker/node-object-mapper#readme) for
 // all calls to .map will apply these transformations
 const mapper = new Mapper({
   mapping: {
-    // example: 'State' is an integer representing a struct
-    // this will output two keys:
-    //  'state' - the integer
+    // example: 'getState' is a method that returns an integer
+    // which represents possible values in a struct
+    //
+    // This mapping will output two keys:
+    //  'state' - the integer itself from getState
     //  'stateName' - the string representing the struct
     State: [
       {
-        key: 'state',
+        key: 'stateName',
         transform: function (val) {
           const index = Number(val.toString());
           const states = ['Funding', 'Active', 'Matured'];
           return states[index];
         },
       },
-      'stateName',
+      'state',
     ],
   },
 });
@@ -96,4 +98,3 @@ const values = await mapper.map('Token', '0xf793db07d9952ff75d5371cceb98c4380277
 ```
 
 ## API Methods
- 
