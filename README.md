@@ -25,6 +25,10 @@ const mapper = new Mapper();
 ```JavaScript
 const mapper = new Mapper({
   types: {
+    // convert ALL int types to string
+    int: function (val) {
+      return Web3.utils.BN(val).toString();
+    },
     // convert all uint256 to string; default is BN
     uint256: function(val) {
       return Web3.utils.BN(val).toString();

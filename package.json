@@ -28,6 +28,7 @@
     "camel-case": "^4.1.0",
     "deepmerge": "^4.2.2",
     "glob": "^7.1.6",
+    "moment": "^2.24.0",
     "object-mapper": "^6.0.1",
     "truffle-hdwallet-provider-privkey": "^0.3.0",
     "web3": "^1.2.4"
