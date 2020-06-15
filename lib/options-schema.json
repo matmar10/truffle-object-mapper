@@ -1,0 +1,82 @@
+{
+  "$id": "https://example.com/address.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "descripton": "Validates options passed to truffle-object-mapper",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "networkName": {
+      "description": "Network name corresponding to truffle config network name. Corresponds to truffle 'network' parameter",
+      "type": "string"
+    },
+    "workingDirectory": {
+      "description": "Base directory to search for truffle config and contracts",
+      "type": "string"
+    },
+    "types": {
+      "description": "Hash of data type and how retrieved values of this type should be converted. Uses ABI definition to convert all properties of the specified type.",
+      "type": "object",
+      "additionalProperties": true,
+      "patternProperties": {
+        ".*": {
+          "description": "Function to transform the raw contract value to an output value",
+          "type": "object"
+        }
+      }
+    },
+    "mapping": {
+      "description": "Hash of source:destination mapping; see: https://github.com/wankdanker/node-object-mapper",
+      "type": "object",
+      "patternProperties": {
+        ".*": {
+          "oneOf": [{
+            "description": "Output key to map value onto within destination object",
+            "type": "string"
+          }, {
+            "description": "List of outputs within destination object",
+            "type": "array",
+            "items": {
+              "oneOf": [{
+                "description": "Output key to map value onto within destination object",
+                "type": "string"
+              }, {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "description": "Output key to map value onto within destination object",
+                    "type": "string"
+                  },
+                  "transform": {
+                    "description": "Function to transform the output value; see also: https://github.com/wankdanker/node-object-mapper",
+                    "type": "object"
+                  }
+                },
+                "required": ["key"]
+              }]
+            }
+          }]
+        }
+      }
+    },
+    "provider": {
+      "description": "A pre-configured Web3 provider",
+      "type": "object"
+    },
+    "contracts": {
+      "oneOf": [{
+        "description": "A glob pattern to where contract ABI files are stored. Defaults to: '[workingDirectory]/build/contracts/*.json'",
+        "type": "string"
+      }, {
+        "description": "An array of glob patterns pointing to where contract ABI files are stored",
+        "type": "array",
+        "items": {
+          "description": "A glob pattern to where contract ABI files are stored. Defaults to: '[workingDirectory]/build/contracts/*.json'",
+          "type": "string"
+        }
+      }, {
+        "description": "A hash of contract name and the pre-loaded ABI. Use if you don't need automatic contract detection and loading",
+        "type": "object"
+      }]
+    }
+  }
+}

@@ -4,7 +4,9 @@
   "description": "Get all the values from a contract in the blockchain, optionally transformed as desired",
   "main": "index.js",
   "scripts": {
-    "release": "release-it"
+    "release": "release-it",
+    "test": "run-with-testrpc -d -m \"myth like bonus scare over problem client lizard pioneer submit female collect\" 'npm run test:build && mocha test/**/*.spec.js'",
+    "test:build": "cd test && truffle build && truffle deploy"
   },
   "keywords": [
     "blockchain",
@@ -19,23 +21,33 @@
   ],
   "author": "Matthew J. Martin <matthew.mar10@gmail.com>",
   "license": "MIT",
-  "dependencies": {
+  "peerDependencies": {
     "@truffle/config": "^1.2.7",
     "@truffle/contract": "^4.1.1",
     "@truffle/provider": "^0.2.3",
+    "web3": "^1.2.4"
+  },
+  "dependencies": {
+    "ajv": "^6.12.2",
     "bluebird": "^3.7.1",
     "bn.js": "^5.0.0",
     "camel-case": "^4.1.0",
     "deepmerge": "^4.2.2",
     "glob": "^7.1.6",
-    "moment": "^2.24.0",
     "object-mapper": "^6.0.1",
-    "truffle-hdwallet-provider-privkey": "^0.3.0",
-    "web3": "^1.2.4"
+    "truffle-hdwallet-provider-privkey": "^0.3.0"
   },
   "devDependencies": {
+    "@truffle/config": "^1.2.19",
+    "@truffle/contract": "^4.2.9",
+    "@truffle/provider": "^0.2.12",
+    "chai": "^4.2.0",
+    "chai-bn": "^0.2.1",
     "eslint-plugin-es-beautifier": "^1.0.1",
-    "release-it": "^12.4.3"
+    "mocha": "^8.0.1",
+    "release-it": "^12.4.3",
+    "run-with-testrpc": "^0.3.1",
+    "web3": "^1.2.9"
   },
   "release-it": {
     "non-interactive": true,
