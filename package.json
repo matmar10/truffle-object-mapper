@@ -38,6 +38,7 @@
     "truffle-hdwallet-provider-privkey": "^0.3.0"
   },
   "devDependencies": {
+    "@adobe/jsonschema2md": "^4.1.3",
     "@truffle/config": "^1.2.19",
     "@truffle/contract": "^4.2.9",
     "@truffle/provider": "^0.2.12",

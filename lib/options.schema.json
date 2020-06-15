@@ -1,7 +1,8 @@
 {
   "$id": "https://example.com/address.schema.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "descripton": "Validates options passed to truffle-object-mapper",
+  "descripton": "Options for truffle-object-mapper",
+  "title": "Options",
   "type": "object",
   "additionalProperties": true,
   "properties": {
@@ -17,6 +18,7 @@
       "description": "Hash of data type and how retrieved values of this type should be converted. Uses ABI definition to convert all properties of the specified type.",
       "type": "object",
       "additionalProperties": true,
+      "properties": {},
       "patternProperties": {
         ".*": {
           "description": "Function to transform the raw contract value to an output value",
@@ -27,6 +29,8 @@
     "mapping": {
       "description": "Hash of source:destination mapping; see: https://github.com/wankdanker/node-object-mapper",
       "type": "object",
+      "additionalProperties": true,
+      "properties": {},
       "patternProperties": {
         ".*": {
           "oneOf": [{
@@ -41,6 +45,7 @@
                 "type": "string"
               }, {
                 "type": "object",
+                "additionalProperties": true,
                 "properties": {
                   "key": {
                     "description": "Output key to map value onto within destination object",
@@ -48,7 +53,8 @@
                   },
                   "transform": {
                     "description": "Function to transform the output value; see also: https://github.com/wankdanker/node-object-mapper",
-                    "type": "object"
+                    "type": "object",
+                    "additionalProperties": true
                   }
                 },
                 "required": ["key"]
@@ -60,7 +66,9 @@
     },
     "provider": {
       "description": "A pre-configured Web3 provider",
-      "type": "object"
+      "type": "object",
+      "properties": {},
+      "additionalProperties": true
     },
     "contracts": {
       "oneOf": [{
@@ -75,7 +83,8 @@
         }
       }, {
         "description": "A hash of contract name and the pre-loaded ABI. Use if you don't need automatic contract detection and loading",
-        "type": "object"
+        "type": "object",
+        "additionalProperties": true
       }]
     }
   }
