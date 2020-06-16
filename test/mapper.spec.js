@@ -13,15 +13,24 @@ const TruffleConfig = require('@truffle/config');
 const deployedAddress = '0x254dffcd3277C0b1660F6d42EFbB754edaBAbC2B';
 
 describe('Mapper', function () {
-  let mapper;
-
-  before(function () {
-    mapper = new Mapper({
-      workingDirectory: __dirname,
+  describe('constructor', function () {
+    it('rejects invalid options', function () {
+      chai.expect(() => {
+        new Mapper({
+          workingDirectory: {},
+        });
+      }).to.throw();
     });
   });
 
   describe('map', function () {
+    let mapper;
+    before(function () {
+      mapper = new Mapper({
+        workingDirectory: __dirname,
+      });
+    });
+
     it('uses defaults', async function () {
       const values = await mapper.map('MetaCoin', deployedAddress);
       chai.expect(values).to.have.property('bytes32Example', 'bytes 32 example');
