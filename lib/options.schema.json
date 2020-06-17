@@ -91,7 +91,6 @@
          },
          "transform": {
            "description": "Function to transform the output value; see also: https://github.com/wankdanker/node-object-mapper",
-           "type": "object",
            "additionalProperties": true
          }
        },
