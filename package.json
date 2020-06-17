@@ -1,6 +1,6 @@
 {
   "name": "truffle-object-mapper",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Get all the values from a contract in the blockchain, optionally transformed as desired",
   "main": "index.js",
   "scripts": {
