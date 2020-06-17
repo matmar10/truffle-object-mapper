@@ -33,34 +33,7 @@
       "properties": {},
       "patternProperties": {
         ".*": {
-          "oneOf": [{
-            "description": "Output key to map value onto within destination object",
-            "type": "string"
-          }, {
-            "description": "List of outputs within destination object",
-            "type": "array",
-            "items": {
-              "oneOf": [{
-                "description": "Output key to map value onto within destination object",
-                "type": "string"
-              }, {
-                "type": "object",
-                "additionalProperties": true,
-                "properties": {
-                  "key": {
-                    "description": "Output key to map value onto within destination object",
-                    "type": "string"
-                  },
-                  "transform": {
-                    "description": "Function to transform the output value; see also: https://github.com/wankdanker/node-object-mapper",
-                    "type": "object",
-                    "additionalProperties": true
-                  }
-                },
-                "required": ["key"]
-              }]
-            }
-          }]
+          "$ref": "#/definitions/PropertyMappingItem"
         }
       }
     },
@@ -86,6 +59,43 @@
         "type": "object",
         "additionalProperties": true
       }]
+    }
+  },
+  "definitions": {
+    "PropertyMappingItem": {
+      "oneOf": [{
+        "description": "Output key to map value onto within destination object",
+        "type": "string"
+      }, {
+        "description": "List of outputs within destination object",
+        "type": "array",
+        "items": {
+          "oneOf": [{
+            "description": "Output key to map value onto within destination object",
+            "type": "string"
+          }, {
+            "$ref": "#/definitions/PropertyMappingObject"
+          }]
+        }
+      }, {
+       "$ref": "#/definitions/PropertyMappingObject"
+      }]
+    },
+    "PropertyMappingObject": {
+       "type": "object",
+       "additionalProperties": true,
+       "properties": {
+         "key": {
+           "description": "Output key to map value onto within destination object",
+           "type": "string"
+         },
+         "transform": {
+           "description": "Function to transform the output value; see also: https://github.com/wankdanker/node-object-mapper",
+           "type": "object",
+           "additionalProperties": true
+         }
+       },
+       "required": ["key"]
     }
   }
 }
