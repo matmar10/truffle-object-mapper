@@ -42,7 +42,7 @@ describe('Mapper', function () {
       const values = await mapper.map('MetaCoin', deployedAddress, {
         bytes32Example: 'bytes32ExampleNewName',
         addressExample: {
-          key: 'addressExampleNewName',
+          key: 'addressExampleAsLowerCase',
           transform: val => val.toLowerCase(),
         },
         uintExample: [
@@ -59,7 +59,7 @@ describe('Mapper', function () {
       chai.expect(values).to.have.property('bytes32ExampleNewName', 'bytes 32 example');
 
       chai.expect(values).to.not.have.property('addressExample');
-      chai.expect(values).to.have.property('addressExampleNewName', '0xab5801a7d398351b8be11c439e05c5b3259aec9b');
+      chai.expect(values).to.have.property('addressExampleAsLowerCase', '0xab5801a7d398351b8be11c439e05c5b3259aec9b');
 
       chai.expect(values).to.not.have.property('uintExample');
       chai.expect(values.uintExampleNewName1).to.be.a.bignumber.that.equals(new BN('100'));
@@ -96,7 +96,7 @@ describe('Mapper({ provider })', function () {
       const values = await mapper.map('MetaCoin', deployedAddress, {
         bytes32Example: 'bytes32ExampleNewName',
         addressExample: {
-          key: 'addressExampleNewName',
+          key: 'addressExampleAsLowerCase',
           transform: val => val.toLowerCase(),
         },
         uintExample: [
@@ -113,7 +113,7 @@ describe('Mapper({ provider })', function () {
       chai.expect(values).to.have.property('bytes32ExampleNewName', 'bytes 32 example');
 
       chai.expect(values).to.not.have.property('addressExample');
-      chai.expect(values).to.have.property('addressExampleNewName', '0xab5801a7d398351b8be11c439e05c5b3259aec9b');
+      chai.expect(values).to.have.property('addressExampleAsLowerCase', '0xab5801a7d398351b8be11c439e05c5b3259aec9b');
 
       chai.expect(values).to.not.have.property('uintExample');
       chai.expect(values.uintExampleNewName1).to.be.a.bignumber.that.equals(new BN('100'));
