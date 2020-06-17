@@ -17,14 +17,7 @@
     "types": {
       "description": "Hash of data type and how retrieved values of this type should be converted. Uses ABI definition to convert all properties of the specified type.",
       "type": "object",
-      "additionalProperties": true,
-      "properties": {},
-      "patternProperties": {
-        ".*": {
-          "description": "Function to transform the raw contract value to an output value",
-          "type": "object"
-        }
-      }
+      "additionalProperties": true
     },
     "mapping": {
       "description": "Hash of source:destination mapping; see: https://github.com/wankdanker/node-object-mapper",
